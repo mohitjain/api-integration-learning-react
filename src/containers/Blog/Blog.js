@@ -4,7 +4,8 @@ import NewPost from './NewPost/NewPost';
 import './Blog.css';
 import Posts from "./Posts/Posts";
 import { Route } from "react-router";
-import { Link } from 'react-router-dom'
+import { NavLink, Switch } from 'react-router-dom';
+
 
 class Blog extends Component {
 
@@ -15,16 +16,18 @@ class Blog extends Component {
                     <nav>
                         <ul>
                             <li>
-                                <Link to="/">Home</Link>
-                                <Link to="/new-post">New Post</Link>
+                                <NavLink to="/" exact>Home</NavLink>
+                                <NavLink to="/new-post">New Post</NavLink>
                             </li>
                         </ul>
                     </nav>
                 </header>
                 {/*<Route path="/" exact render={() => <Posts/>}/>*/}
                 <Route path="/" exact component={Posts}/>
-                <Route path="/new-post" exact component={NewPost}/>
-
+                <Switch>
+                    <Route path="/new-post" exact component={NewPost}/>
+                    <Route path="/:id" exact component={FullPost}/>
+                </Switch>
             </div>
         );
     }
