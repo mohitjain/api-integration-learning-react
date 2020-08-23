@@ -23,10 +23,13 @@ class Blog extends Component {
                     </nav>
                 </header>
                 {/*<Route path="/" exact render={() => <Posts/>}/>*/}
-                <Route path="/" exact component={Posts}/>
+
                 <Switch>
+                    <Route path="/" exact component={Posts}/>
                     <Route path="/new-post" exact component={NewPost}/>
                     <Route path="/:id" exact component={FullPost}/>
+
+                    <Route render={() => <h1>Not found</h1>} />
                 </Switch>
             </div>
         );
